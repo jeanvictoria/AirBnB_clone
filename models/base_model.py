@@ -5,6 +5,7 @@ class BaseModel
 
 from datetime import datetime
 from uuid import uuid4
+import models
 
 tm = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -25,6 +26,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
@@ -32,6 +34,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         dict_new = self.__dict__.copy()
