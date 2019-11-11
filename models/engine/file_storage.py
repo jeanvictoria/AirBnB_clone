@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 import json
-from models.base_model import BaseModel
+import models
+
 
 class FileStorage():
 
@@ -31,6 +32,10 @@ class FileStorage():
         """deserialize the JSON file to __objects """
         try:
             with open(self.__file_path) as file:
-                 self.__object = json.loads(file.read())
+                reloaded = json.loads(file.read())
+                for key, value in reloaded.items():
+                    class_name = key.split('.')[0]
+                    obj = models.classes[class_name](**value)
+                    self.__objects[key] = obj
         except:
             pass
