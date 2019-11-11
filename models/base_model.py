@@ -9,10 +9,11 @@ import models
 
 tm = "%Y-%m-%dT%H:%M:%S.%f"
 
+
 class BaseModel:
 
     def __init__(self, *args, **kwargs):
-        
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -30,7 +31,7 @@ class BaseModel:
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                self.__dict__)
+                                     self.__dict__)
 
     def save(self):
         self.updated_at = datetime.now()
