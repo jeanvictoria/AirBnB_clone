@@ -1,14 +1,16 @@
 #!/usr/bin/python3
+"""FileStorage class"""
 
 import json
 import models
 
 
 class FileStorage():
+    """Serialize and deserialize"""
 
-    """string-path to the JSON file"""
+    # string-path to the JSON file
     __file_path = "file.json"
-    """dictionary"""
+    # dictionary
     __objects = {}
 
     def all(self):
