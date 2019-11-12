@@ -5,7 +5,9 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
+    """Amenity representation"""
     name = ""
 
     def __init__(*args, **kwargs):
+        """Initialize amenity"""
         super().__init__(*args, **kwargs)

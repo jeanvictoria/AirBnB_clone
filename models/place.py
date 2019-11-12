@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
+    """Place representation"""
     city_id = ""
     user_id = ""
     name = ""
@@ -18,4 +19,5 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(*args, **kwargs):
+        """Initialize place"""
         super().__init__(*args, **kwargs)

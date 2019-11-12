@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+"""Initialize the models"""
 
 from models.amenity import Amenity
 from models.city import City
