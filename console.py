@@ -23,10 +23,10 @@ class HBNBCommand(cmd.Cmd):
         args = str(line).split(' ')
         if len(line) == 0:
             print("** class name missing **")
-        elif not args[0] in models.storage.validClasses:
+        elif not args[0] in models.storage.classes:
             print("** class doesn't exist **")
         else:
-            my_model = models.storage.validClasses[args[0]]()
+            my_model = models.storage.classes[args[0]]()
             my_model.save()
             print(my_model.id)
 
@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
             for k, v in objects.items():
                 toPrint.append(str(v))
             print(toPrint)
-        elif not args[0] in models.storage.validClasses:
+        elif not args[0] in models.storage.classes:
             print("** class doesn't exist **")
         else:
             for k, v in objects.items():
@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         idPrinted = 0
         if args[0] == '':
             print("** class name missing **")
-        elif not args[0] in models.storage.validClasses:
+        elif not args[0] in models.storage.classes:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -75,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         idPrinted = 0
         if args[0] == '':
             print("** class name missing **")
-        elif not args[0] in models.storage.validClasses:
+        elif not args[0] in models.storage.classes:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         idPrinted = 0
         if args[0] == '':
             print("** class name missing **")
-        elif not args[0] in models.storage.validClasses:
+        elif not args[0] in models.storage.classes:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """capture defaults commands"""
         args = str(line).split('.')
-        if not args[0] in models.storage.validClasses:
+        if not args[0] in models.storage.classes:
             print("*** Unknown syntax: {}".format(line))
         else:
                 if args[1] == "all()":
@@ -190,7 +190,7 @@ class HBNBCommand(cmd.Cmd):
                         objects = models.storage.all()
                         key = "{}.{}".format(args[0], sid)
                         if key in objects:
-                            obj = models.storage.validClasses[args[0]](**dic)
+                            obj = models.storage.classes[args[0]](**dic)
                             objects[key] = obj
                             obj.save()
                         else:
