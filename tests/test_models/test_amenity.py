@@ -12,7 +12,7 @@ Amenity = amenity.Amenity
 class Test_state(unittest.TestCase):
     """Test to check""" 
     
-    def test_pep8_state(self):
+    def test_pep8_amenity(self):
         """test pep8 style""" 
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/amenity.py'])
