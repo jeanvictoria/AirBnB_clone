@@ -46,5 +46,15 @@ class FileStorage():
                     class_name = key.split('.')[0]
                     obj = models.classes[class_name](**value)
                     self.__objects[key] = obj
-        except:
+        except IOError:
             pass
+
+    def destroy(self, obj):
+        key = obj.__class__.__name__ + "." + obj.id
+        del(self.__objects[key])
+        self.save()
+
+    def update(self, obj, att, val):
+        key = obj.__class__.__name__ + "." + obj.id
+        setattr(obj, att, val)
+        self.save()
