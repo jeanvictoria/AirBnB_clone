@@ -18,6 +18,6 @@ class Place(BaseModel):
     longuitude = 0.0
     amenity_ids = []
 
-    def __init__(*args, **kwargs):
+    def __init__(self,*args, **kwargs):
         """Initialize place"""
         super().__init__(*args, **kwargs)
