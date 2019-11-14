@@ -10,10 +10,12 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 class FileStorage():
     """Serialize and deserialize"""
 
-    classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City, "Place": Place, "Review": Review, "State": State, "User": User}
+    classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+               "Place": Place, "Review": Review, "State": State, "User": User}
 
     # string-path to the JSON file
     __file_path = "file.json"
