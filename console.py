@@ -82,8 +82,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             objects = models.storage.all()
             try:
-                obj = objects["{}.{}".format(args[0], args[1])]
-                obj.destroy()
+                key = "{}.{}".format(args[0], args[1])
+                obj = objects[key]
+                del objects[key]
             except:
                 print("** no instance found **")
 
@@ -104,19 +105,19 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(args) < 4:
             print("** value missing **")
-        elif args[2] != "id" and args[2] != "created_at" and \
-                        args[2] != "updated_at":
-            obj = models.storage.all()
+        else:
             key = "{}.{}".format(args[0], args[1])
             try:
-                obj[key].update(args[2], args[3])
+                obj = models.storage.all().get(key)
+                setattr(models.storage.all()[key], args[2], args[3])
+                models.storage.save()
             except:
                 print("** no instance found **")
 
     def help_update(self):
         print("Updates an instance based on the class name and id by "
               "adding or updating attribute.\n"
-              "Ex: $ update BaseModel 1234-1234-1234 name "'"First name"')
+              "Ex: $ update BaseModel 1234-1244-1234 name "'"First name"')
 
     def help_destroy(self):
         print("Deletes an instance based on the class name and id.\n"
