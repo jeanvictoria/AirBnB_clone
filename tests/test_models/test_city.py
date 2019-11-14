@@ -2,29 +2,31 @@
 """
 Contains the Test classes
 """
- 
+
 from models import city
 import pep8
-import unittest 
+import unittest
 from models.base_model import BaseModel
 City = city.City
 
+
 class Test_city(unittest.TestCase):
-    """Test to check""" 
-    
+    """Test to check"""
+
     def test_pep8_city(self):
-        """test pep8 style""" 
+        """test pep8 style"""
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/city.py'])
-        self.assertEqual(result.total_errors, 0, "Code style errors founded.") 
-    
+        self.assertEqual(result.total_errors, 0, "Code style errors founded.")
+
     def test_city_docstring(self):
         """test docstring"""
         self.assertIsNotNone(city.__doc__, "city.py needs docstring")
 
+
 class Test_City(unittest.TestCase):
     """Test the class City"""
-    
+
     def test_subclass(self):
         """Test if City is a BaseModel subclass"""
         city = City()

@@ -23,6 +23,7 @@ class Test_user(unittest.TestCase):
         """test docstring"""
         self.assertIsNotNone(user.__doc__, "user.py needs docstring")
 
+
 class Test_User(unittest.TestCase):
     """Test the class User"""
 

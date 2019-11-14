@@ -23,6 +23,7 @@ class Test_place(unittest.TestCase):
         """test docstring"""
         self.assertIsNotNone(place.__doc__, "user.py needs docstring")
 
+
 class Test_Place(unittest.TestCase):
     """Test the class Place"""
 
@@ -105,8 +106,7 @@ class Test_Place(unittest.TestCase):
         place = Place()
         self.assertTrue(hasattr(place, "amenity_ids"))
         self.assertEqual(type(place.amenity_ids), list)
-        self.assertEqual(len(place.amenity_ids), 0) 
-
+        self.assertEqual(len(place.amenity_ids), 0)
 
     def test_create_to_dict(self):
         """test to verified if the dic is created"""
